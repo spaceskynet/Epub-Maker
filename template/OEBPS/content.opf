@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<package version="2.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <dc:title>${title}</dc:title>
+    <dc:language>${language}</dc:language>
+    <dc:identifier opf:scheme="ISBN">${isbn}</dc:identifier>
+    <dc:creator opf:file-as="${primary_author}" opf:role="aut">${primary_author}</dc:creator>
+% for author in secondary_authors:
+    <dc:contributor opf:file-as="${author}" opf:role="aut">${author}</dc:contributor>
+% endfor
+    <dc:date>${date}</dc:date>
+    <dc:publisher>${publisher}</dc:publisher>
+  </metadata>
+  <manifest>
+    <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml" />
+    <item href="Styles/style.css" id="css" media-type="text/css" />
+% if cover_art is not None:
+    <item href="Images/cover.jpg" id="cover" media-type="image/jpeg"/>
+% endif 
+    <item href="Text/titlepage.html" id="titlepage" media-type="application/xhtml+xml"/>
+% for j,part in enumerate(parts):
+    <item href="${'Text/chapter_%04d.html'%j}" id="${'id%04d'%j}" media-type="application/xhtml+xml"/>
+    % for i,(chapter,content,num) in enumerate(part['chapters']): 
+        <item href="${'Text/chapter_%04d_%04d.html'%(j,i)}" id="${'id%04d_%04d'%(j,i)}" media-type="application/xhtml+xml"/>
+    % endfor
+% endfor    
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="titlepage" linear="yes"/>
+% for j,part in enumerate(parts):
+    <itemref idref="${'id%04d'%j}" linear="yes"/>
+    % for i,(chapter,content,num) in enumerate(part['chapters']): 
+        <itemref idref="${'id%04d_%04d'%(j,i)}" linear="yes"/>
+    % endfor
+% endfor
+  </spine>
+  <guide>
+    <reference href="Text/titlepage.xhtml" title="Cover" type="cover" />
+  </guide>
+</package>

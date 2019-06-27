@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta name="dtb:uid" content="${isbn}" />
+    <meta name="dtb:depth" content="2" />
+    <meta name="dtb:totalPageCount" content="0" />
+    <meta name="dtb:maxPageNumber" content="0" />
+  </head>
+  <docTitle>
+      <text>${title}</text>
+  </docTitle>
+  <docAuthor>
+      <text>${primary_author}</text>
+  </docAuthor>
+  <navMap>
+    <navPoint id="cover" playOrder="0">
+      <navLabel>
+        <text>Cover</text>
+      </navLabel>
+      <content src="Text/titlepage.html"/>
+    </navPoint>
+% for j,part in enumerate(parts):
+	<navPoint id="${'id%04d'%j}" playOrder="${part['num']+1}">
+		<navLabel>
+			<text>${part['partname']}</text>
+		</navLabel>
+		<content src="${'Text/chapter_%04d.html'%j}"/>
+	% for i,(chapter,content,num) in enumerate(part['chapters']): 
+		<navPoint id="${'id%04d_%04d'%(j,i)}" playOrder="${num+1}">
+		    <navLabel>
+			    <text>${chapter}</text>
+		    </navLabel>
+		  <content src="${'Text/chapter_%04d_%04d.html'%(j,i)}"/>
+	    </navPoint>
+	% endfor
+	</navPoint>
+% endfor
+  </navMap>
+</ncx>

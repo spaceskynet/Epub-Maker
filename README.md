@@ -1,7 +1,6 @@
 # Epub Maker
 
 > By:SpaceSkyNet
-
 ## Use YML to easily create an ePub file!
 
 ### Usage:
@@ -53,3 +52,4 @@ chapters: #must
 ### Thanks
 
 [ebook-maker](https://github.com/daleobrien/ebook-maker)
+
