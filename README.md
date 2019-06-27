@@ -43,11 +43,11 @@ chapters: #must
   - part: "Part 1"
     name: ['Chapter 1']
     file: ['1.txt']
-	
+
   - part: "Part 2"
     name: ['Chapter 2']
     file: ['2.txt']
-	
+
   ...(more part)
 ```
 ### Thanks
