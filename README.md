@@ -2,7 +2,7 @@
 
 > By:SpaceSkyNet
 
-## Use YML to easily create a ePub file!
+## Use YML to easily create an ePub file!
 
 ### Usage:
 
