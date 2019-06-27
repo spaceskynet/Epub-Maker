@@ -1,0 +1,19 @@
+title: "None" #must
+primary_author: "None" #must
+secondary_authors: [] 
+cover_art: "cover.jpg" 
+language: "zh-CN" #must
+publisher: "Spaceskynet"
+isbn: "0123456789"
+renderer: "text" #must
+template_folder: "template"
+source_folder: "source" #must
+output_folder: "output"
+chapters: #must
+  - part: "Part 1"
+    name: ['Chapter 1']
+    file: ['1.txt']
+
+  - part: "Part 2"
+    name: ['Chapter 2']
+    file: ['2.txt']
